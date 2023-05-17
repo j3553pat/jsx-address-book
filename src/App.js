@@ -9,29 +9,37 @@ class App extends Component {
     super(props);
     this.state = {
       arrayOfProfile: [],
-      isLikes: false,
+      showDetails: false,
     };
   }
   componentDidMount() {
     axios.get(Url)
     .then( res => {
-      const arrayOfProfile = res.data
+      const arrayOfProfile = res.data.results
       this.setState({arrayOfProfile})
     })
   };
+
+  showDetails = () => {
+    this.setState({...this.state, showDetails:!this.state.showDetails})
+  }
 
   render() {
     return (
       <div className="App">
       <header className="App-header">
-        <p>{this.state.arrayOfProfile.map((profile, index) => {
+        <div>{this.state.arrayOfProfile.map((profile, index) => {
           return (
             <ProfileInfo
              key= {index} 
-             name={profile.name}
+             firstName={profile.name.first} 
+             lastName={profile.name.last}
+             age= {profile.dob.age}
+             dob={profile.dob.date}
+             pic={profile.picture.large}
              />
           )
-        })}</p>
+        })}</div>
       </header>
     </div>
     )

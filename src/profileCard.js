@@ -4,17 +4,22 @@ import Card from 'react-bootstrap/Card';
 
 
 function ProfileInfo(props) {
-    const {name} = props
+    const {firstName, lastName, age, dob, pic} = props
     return (
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
+      <Card style={{ width: '18rem', backgroundColor:"#70b382",
+         borderRadius: 15, margin:10, padding: 10 }}>
+        <Card.Img style={{borderRadius: 10}}
+          variant="top" src= {pic}/>
         <Card.Body>
-          <Card.Title>{name}</Card.Title>
+          <Card.Title style={{fontSize: 25, fontFamily: "fantasy"}}>
+            {firstName} {lastName}
+            </Card.Title>
           <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+          Age: {age}
+          <br />
+            DOB: {dob.slice(0,9)}
           </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+          <Button variant="primary">Show Details</Button>
         </Card.Body>
       </Card>
     )
