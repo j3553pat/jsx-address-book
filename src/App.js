@@ -10,6 +10,7 @@ class App extends Component {
     this.state = {
       arrayOfProfile: [],
       showDetails: false,
+      clickedIndex: null
     };
   }
   componentDidMount() {
@@ -19,10 +20,6 @@ class App extends Component {
       this.setState({arrayOfProfile})
     })
   };
-
-  showDetails = () => {
-    this.setState({...this.state, showDetails:!this.state.showDetails})
-  }
 
   render() {
     return (
@@ -37,6 +34,12 @@ class App extends Component {
              age= {profile.dob.age}
              dob={profile.dob.date}
              pic={profile.picture.large}
+             cell={profile.cell}
+             email={profile.email}
+             gender={profile.gender}
+             showDetails={this.state.showDetails}
+             visibleInfo={this.visibleInfo(index)}
+             clickedIndex={this.state.clickedIndex}
              />
           )
         })}</div>
